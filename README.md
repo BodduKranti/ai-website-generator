@@ -54,3 +54,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 // Lucid Icons auto installed when install ui.shadcn
     https://lucide.dev/icons/
     
+
+# Backend Dependices
+1. https://orm.drizzle.team/

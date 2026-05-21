@@ -48,5 +48,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
     1.  import { Outfit } from 'next/font/google'
         const Outfit = Outfit({subset:['latin']})
 
+        div className = Outfit.Classname
 // Untitled UI take any logo for reference
+
+// Lucid Icons auto installed when install ui.shadcn
+    https://lucide.dev/icons/
     

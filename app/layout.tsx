@@ -17,8 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={` ${outFit.className} h-full antialiased`}
-    >
+      className={` ${outFit.className} h-full antialiased`} foxified="">
       <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
         <TooltipProvider>{children}</TooltipProvider>
       </body>

@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 interface MenuItems {
@@ -18,7 +19,7 @@ const MenuName: MenuItems[] = [
 
 const HeaderSection = () => {
     return (
-        <header className='w-full flex items-center justify-between gap-4'>
+        <header className='w-full flex items-center justify-between gap-4 px-4 py-2 border-b'>
             <div className=''>
                 <Image
                     src={`/logo.svg`}
@@ -29,7 +30,7 @@ const HeaderSection = () => {
                 />
             </div>
 
-            <div className=''>
+            <div className='flex gap-2 items-center'>
                 {
                     MenuName.map((items, index) => (
                         <Button variant={'ghost'} key={index}>{items.pagename}</Button>
@@ -38,7 +39,7 @@ const HeaderSection = () => {
             </div>
 
             <div className=''>
-                <Button variant={'default'}>Get Started</Button>
+                <Button variant={'default'}>Get Started <ArrowRight className='w-4 h-4' /></Button>
             </div>
         </header>
     )

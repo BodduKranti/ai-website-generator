@@ -1,0 +1,11 @@
+allowBuilds:
+  '@clerk/shared': false
+  esbuild: false
+  msw: false
+  sharp: false
+  unrs-resolver: false
+minimumReleaseAgeExclude:
+  - '@clerk/backend@3.4.13'
+  - '@clerk/nextjs@7.4.1'
+  - '@clerk/react@6.7.1'
+  - '@clerk/shared@4.13.1'

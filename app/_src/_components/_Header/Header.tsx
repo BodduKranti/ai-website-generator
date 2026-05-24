@@ -1,6 +1,9 @@
+'use client'
 import { Button } from '@/components/ui/button'
+import { SignInButton, useUser } from '@clerk/nextjs'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface MenuItems {
     pagename: string,
@@ -18,6 +21,8 @@ const MenuName: MenuItems[] = [
 ]
 
 const HeaderSection = () => {
+    const { user } = useUser()
+
     return (
         <header className='w-full flex items-center justify-between gap-4 px-4 py-2 border-b'>
             <div className=''>
@@ -39,7 +44,17 @@ const HeaderSection = () => {
             </div>
 
             <div className=''>
-                <Button variant={'default'}>Get Started <ArrowRight className='w-4 h-4' /></Button>
+                {
+                    !user ?
+                        <SignInButton mode='modal' forceRedirectUrl={'/workspace'}>
+                            <Button variant={'default'}>Get Started <ArrowRight className='w-4 h-4' /></Button>
+                        </SignInButton> :
+                        <Link href={'/workspace'}>
+                            <Button variant={'default'}>Get Started <ArrowRight className='w-4 h-4' /></Button>
+                        </Link>
+
+                }
+
             </div>
         </header>
     )

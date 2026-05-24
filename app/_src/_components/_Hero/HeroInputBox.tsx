@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { SignInButton } from '@clerk/nextjs'
 import { ArrowUp, ImagePlusIcon } from 'lucide-react'
 import { Dispatch, SetStateAction } from 'react'
 
@@ -18,7 +19,9 @@ const HeroInputBox = ({ userInput, setUserInput }: HeroInputBoxprops) => {
             />
             <div className='w-full flex justify-between  items-center'>
                 <Button variant={'ghost'}><ImagePlusIcon className='w-4 h-4' /></Button>
-                <Button variant={'default'}><ArrowUp className='w-4 h-4' /></Button>
+                <SignInButton mode='modal' forceRedirectUrl={'/workspace'}>
+                    <Button disabled={!userInput} variant={'default'}><ArrowUp className='w-4 h-4' /></Button>
+                </SignInButton>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import HeroSuggestions from './HeroSuggestions'
 const Hero = () => {
 
     const [userInput, setUserInput] = useState<any>('')
-    console.log('userInput', userInput)
+    // console.log('userInput', userInput)
     return (
         <div className='mx-auto md:w-7xl w-full flex flex-col gap-4 justify-center items-center h-[80vh]'>
             {/* Header & Description */}

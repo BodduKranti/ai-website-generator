@@ -20,7 +20,7 @@ export default function RootLayout({
         <ClerkProvider>
             <html
                 lang="en"
-                className={` ${outFit.className} h-full antialiased`} suppressHydrationWarning>
+                className={` ${outFit.className} h-full antialiased`} suppressHydrationWarning cz-shortcut-listen="true">
                 <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
                     <Provider>
                         <TooltipProvider>{children}</TooltipProvider>

@@ -1,8 +1,10 @@
-import React from 'react'
+import Hero from '@/app/_src/_components/_Hero/Hero'
 
 const workspace = () => {
     return (
-        <div>workspace</div>
+        <div className='w-full'>
+            <Hero />
+        </div>
     )
 }
 

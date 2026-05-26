@@ -27,6 +27,9 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ user: data })
     }
 
+    console.log('useResult[0]', { ...useResult[0] })
+
     return NextResponse.json({ user: useResult[0] })
 
 }
+

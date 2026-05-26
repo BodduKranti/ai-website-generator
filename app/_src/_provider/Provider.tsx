@@ -13,7 +13,7 @@ const Provider = ({
     const { user } = useUser()// if user exsist then get the details from the user
 
     // console.log('user', user)
-    const [userDetails, setUserDetails] = useState<any>()
+    const [userDetails, setUserDetails] = useState<any>(null)
 
     useEffect(() => {
         user && CreateUSer()
@@ -24,7 +24,6 @@ const Provider = ({
         console.log('user', result.data)
         setUserDetails(result?.data?.user)
     }
-
     return (
         <div className='w-full'>
             <UserDetailsContext value={{ userDetails, setUserDetails }}>

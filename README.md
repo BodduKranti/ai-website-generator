@@ -108,10 +108,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
                     url: process.env.DATABASE_URL!,
                 },
                 });
+
+
+                Once change the schema values then use the point 8 and then 9
         8.  npx drizzle-kit push
         9.  npx drizzle-kit studio 
                 -   database setup generete locally
         10. npm i --save-dev @types/lucide-react
+        11. npm i uuid
 
 # Authentication Library
  

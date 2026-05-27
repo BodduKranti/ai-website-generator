@@ -49,12 +49,12 @@ const HeaderSection = () => {
                 {
                     !user ?
                         <SignInButton mode='modal' forceRedirectUrl={'/workspace'}>
-                            <CommonButton
+                            {/* <CommonButton
                                 buttonText='Get Started'
                                 varient='default'
                                 icon={<ArrowRight className='w-4 h-4' />}
-                            />
-                            {/* <Button variant={'default'}>Get Started <ArrowRight className='w-4 h-4' /></Button> */}
+                            /> */}
+                            <Button variant={'default'}>Get Started <ArrowRight className='w-4 h-4' /></Button>
                         </SignInButton> :
                         <Link href={'/workspace'}>
                             {/* {user ?? ''} */}

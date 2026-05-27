@@ -8,11 +8,11 @@ import { UserButton } from '@clerk/nextjs'
 
 const SidebarFootersection = () => {
     const { userDetails, setUserDetails } = useContext(UserDetailsContext)
-    console.log('footer userDetails', userDetails)
+
     return (
         <div className="p-3 border rounded-xl space-y-3 bg-secondary">
             <h2 className='flex justify-between items-center'>
-                Remaining Credits1 <span className="font-bold">{userDetails?.credits}</span>
+                Remaining Credits <span className="font-bold">{userDetails?.credits}</span>
             </h2>
             <Progress value={33} />
             <CommonButton

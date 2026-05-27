@@ -4,6 +4,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { Outfit } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import Provider from "./_src/_provider/Provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const outFit = Outfit({ subsets: ['latin'] })
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
                 lang="en"
                 className={` ${outFit.className} h-full antialiased`} suppressHydrationWarning cz-shortcut-listen="true">
                 <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
+                    <Toaster />
                     <Provider>
                         <TooltipProvider>{children}</TooltipProvider>
                     </Provider>

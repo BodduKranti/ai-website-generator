@@ -42,7 +42,7 @@ const HeroInputBox = ({ userInput, setUserInput }: HeroInputBoxprops) => {
             console.log('post project restults', result);
             toast.success('Project Created Successfully')
             setLoading(false)
-            // router.push(`/playground/${projectId}?frameid=${frameId}`)
+            router.push(`/playground/${projectId}?frameid=${frameId}`)
         } catch (error) {
             toast.error('Internal server Error')
             setLoading(false)

@@ -38,7 +38,7 @@ const HeroInputBox = ({ userInput, setUserInput }: HeroInputBoxprops) => {
         }
         console.log(' payload', payload)
         try {
-            const result = await axios.post(`/api/projects`, payload)
+            const result = await axios.post(routesApiurl.projectpostURL, payload)
             console.log('post project restults', result);
             toast.success('Project Created Successfully')
             setLoading(false)

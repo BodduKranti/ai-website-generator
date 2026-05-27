@@ -1,4 +1,5 @@
 export enum routesApiurl {
-    projectpostURL = `/api/projects`
+    projectpostURL = `/api/projects`,
+    frameGetDetailsURL = `/api/frames`,
 }
 

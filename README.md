@@ -152,3 +152,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 # API Calls
     1. npm install axios
+
+# AI Generete stepss
+1. kravixstudio.com
+2. openrouter.ai

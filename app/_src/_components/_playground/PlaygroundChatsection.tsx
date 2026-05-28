@@ -5,16 +5,17 @@ import ChatMessageFooter from './ChatMessages/ChatMessageFooter'
 
 interface chatMessagesprops {
     msg: chatMessagesitem[],
-    onSend: (values: any) => void
+    onSend: (values: any) => void,
+    loading: boolean
 }
 
-const PlaygroundChatsection: FC<chatMessagesprops> = ({ msg, onSend }) => {
+const PlaygroundChatsection: FC<chatMessagesprops> = ({ msg, onSend, loading }) => {
     return (
         <div className='w-96 h-full shadow p-4 flex flex-col'>
-            <ChatMessagesList msgList={msg} />
+            <ChatMessagesList msgList={msg} loading={loading} />
 
             {/* Footer input */}
-            <ChatMessageFooter onSend={onSend} />
+            <ChatMessageFooter onSend={onSend} loading={loading} />
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import CommonButton from '../../_Field/CommonButton'
-import { ArrowUp } from 'lucide-react'
+import { ArrowUp, Loader2Icon } from 'lucide-react'
 
-const ChatMessageFooter = ({ onSend }: { onSend: (value: any) => void }) => {
+const ChatMessageFooter = ({ onSend, loading }: { onSend: (value: any) => void, loading: boolean }) => {
     const [input, setInput] = useState<any>('')
     const handleSend = () => {
         if (!input?.trim()) return;
@@ -10,8 +10,9 @@ const ChatMessageFooter = ({ onSend }: { onSend: (value: any) => void }) => {
         setInput('')
     }
     return (
-        <div className='border-t p-3 flex item-center gap-2'>
+        <div className='border-t py-3 flex item-center gap-2'>
             <textarea
+                value={input}
                 onChange={(e: any) => {
                     console.log(e.target.value)
                     setInput(e.target.value)
@@ -21,7 +22,7 @@ const ChatMessageFooter = ({ onSend }: { onSend: (value: any) => void }) => {
             />
             <CommonButton
                 buttonText=''
-                icon={<ArrowUp className='w-4 h-4' />}
+                icon={loading ? <Loader2Icon className='w-4 h-4 animate-spin' /> : <ArrowUp className='w-4 h-4' />}
                 varient='default'
                 className={'w-auto!'}
                 onClick={handleSend}

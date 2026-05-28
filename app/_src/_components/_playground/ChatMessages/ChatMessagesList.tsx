@@ -14,7 +14,7 @@ const ChatMessagesList: FC<chatMessagesprops> = ({ msgList, loading }) => {
                 msgList?.length === 0 ?
                     <p className='text=gray-400 text-center'>No Messages Yet</p> :
                     (
-                        msgList.map((list: chatMessagesitem, index: number) => (
+                        msgList?.map((list: chatMessagesitem, index: number) => (
                             <ChatMessagesItems {...list} key={index} />
                         ))
                     )

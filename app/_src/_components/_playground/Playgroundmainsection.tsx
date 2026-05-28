@@ -20,6 +20,18 @@ export type Frame = {
     chatMessages: chatMessagesitem[]
 }
 
+const prompt = `userInput : {userInput}
+Based on the user input, generte a complete HTML Tailwind Css mode
+Do not add HTML head or titlte tag, just body
+make it fully responsive.
+Requirements:
+- All primary components must match the theme color.
+- Add proper padding and margin for each element.
+- Components should be independent; do not connet them.
+- Design must be fully responsive for all screen sizes.
+- Use placeholders for all images according to light and dark mode
+`
+
 const Playgroundmainsection = () => {
     const { projectid } = useParams()
     const params = useSearchParams()
@@ -34,6 +46,10 @@ const Playgroundmainsection = () => {
         const details = await axios.get(`${routesApiurl.frameGetDetailsURL}?frameId=${frameId}&projectId=${projectid}`)
         console.log('Frame Details', details.data)
         setFrameDetails(details.data)
+        if (details?.data?.chatMessages?.length === 1) {
+            const userMessage = details?.data?.chatMessages[0].content
+            sendMessage(userMessage)
+        }
     }
 
     useEffect(() => {
@@ -42,17 +58,10 @@ const Playgroundmainsection = () => {
 
     console.log('frameDetails', frameDetails)
 
-    const sendMessage = async (vlaues: string) => {
+    const sendMessage = async (userInput: string) => {
         setLoading(true)
-        const assistent = { role: 'user', content: vlaues }
+        const assistent = { role: 'user', content: prompt.replace(`{userInput}`, userInput) }
         setMessages((prev: chatMessagesitem[]) => [...prev, assistent])
-        // frameDetails?.chatMessages?.push(assistent)
-        // console.log('post frameDetails', frameDetails)
-        // const aiPostresults = await axios.post(routesApiurl.aiModelURL, {
-        //     messages: [assistent],
-        // })
-
-
         const aiPostresults = await fetch(routesApiurl.aiModelURL, {
             method: 'POST',
             headers: {
@@ -63,6 +72,7 @@ const Playgroundmainsection = () => {
             })
         });
 
+        console.log('aiPostresults', aiPostresults)
         const reader = aiPostresults?.body?.getReader();
         const decoder = new TextDecoder();
 
@@ -114,8 +124,8 @@ const Playgroundmainsection = () => {
     }
 
 
-    console.log('messages', messages)
-    console.log('generatedcode', generatedcode)
+    // console.log('messages', messages)
+    // console.log('generatedcode', generatedcode)
 
     return (
         <div className='w-full flex h-[calc(100vh-60px)]'>

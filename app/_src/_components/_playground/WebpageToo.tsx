@@ -1,3 +1,4 @@
+'use client'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import CommonButton from '../_Field/CommonButton'
@@ -20,7 +21,7 @@ const WebpageToo: FC<Webpageprops> = ({ setScreensizesWeb, screensizesWeb, gener
         const cleanCode = (HTMLCode.replace("{code}", generatedCode) || '')
             .replaceAll("```html", "")
             .replaceAll("```", "")
-            .replaceAll("html", "")
+            .replace("html", "")
         setFinalCode(cleanCode)
     }, [generatedCode])
 
@@ -28,11 +29,10 @@ const WebpageToo: FC<Webpageprops> = ({ setScreensizesWeb, screensizesWeb, gener
     // View HTML generated Code in new tab
     const ViewCodeopenNewTab = () => {
         if (!finalCode) return;
-
         const blob = new Blob([finalCode], { type: 'text/html' })
         const url = URL.createObjectURL(blob);
-
         window.open(url, "_blank")
+
     }
 
     // Copy the HTML Code

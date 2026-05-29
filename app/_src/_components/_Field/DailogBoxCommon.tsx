@@ -35,7 +35,7 @@ const DailogBoxCommon: FC<DailogBoxCommonprops> = ({
 }) => {
     return (
         <Dialog>
-            <DialogTrigger>{dailogButton}</DialogTrigger>
+            <DialogTrigger asChild>{dailogButton}</DialogTrigger>
             <DialogContent className={`
                 ${dialogSizes === "extra-large" && 'min-w-7xl'}
                 ${dialogSizes === "large" && 'min-w-5xl'}

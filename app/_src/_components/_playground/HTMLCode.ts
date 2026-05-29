@@ -67,3 +67,25 @@ export const HTMLCode = `<!DOCTYPE html>
             </head>
             <body id="root">{code}</body>
             </html>`
+
+export const HTML_WEB_CODE = `
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="AI Website Builder - Modern TailwindCSS + Flowbite Template">
+        <title>AI Website Builder</title>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>  
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>                
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+
+        <!-- Chart.js for charts & graphs -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+    </head>
+    <body id="root"></body>
+    </html>`

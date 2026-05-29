@@ -1,6 +1,6 @@
 import { db } from "@/config/db";
 import { chatTable, frameTable } from "@/config/schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -36,12 +36,37 @@ export async function GET(req: NextRequest) {
             chatMessages: chatResult[0]?.chatMessages,
         };
 
-        console.log('server frameResult', frameResult)
-        console.log('server frameResult', frameResult)
-        console.log('server frameIdParam', frameIdParam)
-        console.log('server finalResults', finalResults)
-
         return NextResponse.json(finalResults);
+
+    } catch (error: any) {
+        console.log(error);
+
+        return NextResponse.json(
+            { message: error.message },
+            { status: 500 }
+        );
+    }
+}
+
+
+export async function PUT(req: NextRequest) {
+    const body = await req.json()
+    try {
+        const { frameId, designCode, projectId } = body
+        const reault = await db.update(frameTable).set({
+            designCode: designCode
+        })
+            //@ts-ignore
+            .where(and(
+                eq(frameTable.frameId, frameId),
+                eq(frameTable.projectId, projectId)
+            ))
+
+        return NextResponse.json({
+            reault,
+            message: 'Updated Frame',
+            status: 200
+        })
 
     } catch (error: any) {
         console.log(error);

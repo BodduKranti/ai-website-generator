@@ -156,3 +156,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # AI Generete stepss
 1. kravixstudio.com
 2. openrouter.ai
+
+# HTML Code Format
+1. npm i react-syntax-highlighter 
+2. npm i --save-dev @types/react-syntax-highlighter

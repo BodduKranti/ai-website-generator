@@ -1,11 +1,14 @@
 'use client'
-import { FC, useEffect, useRef } from "react"
+import { FC, useEffect, useRef, useState } from "react"
+import WebpageToo from "./WebpageToo"
 
 interface PlaygroundwebsiteDesignsectionprops {
     generatedCode: any
 }
 
 const PlaygroundWebsiteDesignsection: FC<PlaygroundwebsiteDesignsectionprops> = ({ generatedCode }) => {
+
+    const [screensizesWeb, setScreensizesWeb] = useState<string>('web')
 
     const iFrameRef = useRef<HTMLIFrameElement>(null)
 
@@ -106,7 +109,16 @@ const PlaygroundWebsiteDesignsection: FC<PlaygroundwebsiteDesignsectionprops> = 
     }, [generatedCode])
 
     return (
-        <iframe ref={iFrameRef} sandbox="allow-scripts allow-same-origin" className="w-full h-175 border rounded"></iframe>
+        <div className="p-5 w-full flex items-center justify-center flex-col">
+            <iframe ref={iFrameRef} sandbox="allow-scripts allow-same-origin"
+                className={`${screensizesWeb === 'web' ? 'w-full' : 'w-100'}  h-150  rounded-2xl border-2`}></iframe>
+            <WebpageToo
+                screensizesWeb={screensizesWeb}
+                setScreensizesWeb={setScreensizesWeb}
+                generatedCode={generatedCode}
+            />
+        </div>
+
         // <div className='p-4 flex-1 h-full overflow-y-auto'>
         //     <div className="" dangerouslySetInnerHTML={{
         //         __html: `

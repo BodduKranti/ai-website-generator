@@ -135,7 +135,8 @@ const Playgroundmainsection = () => {
                 const index = response.indexOf('```html') + 7;
                 const initialCodeChunk = response.slice(index)
                 setGeneratedCode((prev: any) => prev + initialCodeChunk)
-            } else if (isCode) {
+            }
+            else if (isCode) {
                 setGeneratedCode((prev: any) => prev + text)
             }
         }
@@ -177,17 +178,6 @@ const Playgroundmainsection = () => {
         })
     }
 
-    // useEffect(() => {
-    //     if (generatedCode?.length > 10 && !loading) {
-    //         SaveGenerated_code()
-    //         // setFrameData({
-    //         //     frameId: frameId,
-    //         //     projectid: projectid,
-    //         //     designCode: generatedCode
-    //         // })
-    //     }
-    // }, [generatedCode])
-
     // Save Generated Code
     const SaveGenerated_code = async (code: string) => {
         try {
@@ -197,7 +187,6 @@ const Playgroundmainsection = () => {
                 designCode: code
             })
             console.log(results?.data)
-            console.log('generated code successfull')
             toast.success('Website is ready ')
         } catch (error) {
             console.log(error)

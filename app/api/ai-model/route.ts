@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
                 "HTTP-Referer": `${process.env.HTTP_SERVER_URL}`,
             },
             data: {
-                model: "google/gemini-2.5-flash-lite-preview-09-2025",
+                model: `${process.env.AI_MODEL}`,
                 messages: messages,
                 stream: true,
             },
@@ -94,6 +94,6 @@ export async function POST(req: NextRequest) {
         });
     } catch (error) {
         console.error("API ERROR:", error);
-        return Response.json({ success: false, error: "Something went wrong", }, { status: 500 });
+        return Response.json({ success: false, error: error, }, { status: 500 });
     }
 }

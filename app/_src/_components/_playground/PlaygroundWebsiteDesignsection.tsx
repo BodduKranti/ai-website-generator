@@ -2,12 +2,15 @@
 import { FC, useEffect, useRef, useState } from "react"
 import WebpageToo from "./WebpageToo"
 import { HTML_WEB_CODE } from "./HTMLCode"
+import { useGetFrameDetails } from "../../Context/GetFrameDetails"
 
 interface PlaygroundwebsiteDesignsectionprops {
     generatedCode: any
 }
 
 const PlaygroundWebsiteDesignsection: FC<PlaygroundwebsiteDesignsectionprops> = ({ generatedCode }) => {
+
+    const { setSelectedEl } = useGetFrameDetails()
 
     const [screensizesWeb, setScreensizesWeb] = useState<string>('web')
 
@@ -136,6 +139,7 @@ const PlaygroundWebsiteDesignsection: FC<PlaygroundwebsiteDesignsectionprops> = 
 
                 selectedEl.addEventListener("blur", handleBlur);
                 console.log("Selected Element:", selectedEl);
+                setSelectedEl(selectedEl)
             };
 
             // =====================================
@@ -151,6 +155,9 @@ const PlaygroundWebsiteDesignsection: FC<PlaygroundwebsiteDesignsectionprops> = 
                     selectedEl = null;
                 }
             };
+
+
+
 
             // =====================================
             // EVENTS

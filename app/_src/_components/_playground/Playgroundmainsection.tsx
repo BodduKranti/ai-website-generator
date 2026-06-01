@@ -8,6 +8,8 @@ import { routesApiurl } from '../../types'
 import { useEffect, useState } from 'react'
 // import { useGetFrameDetails } from '../../Context/GetFrameDetails'
 import { toast } from 'sonner'
+import { useGetFrameDetails } from '../../Context/GetFrameDetails'
+import ImageSettingSection from './ImagesettingSection'
 
 export type chatMessagesitem = {
     role: string,
@@ -66,6 +68,8 @@ const Playgroundmainsection = () => {
     const { projectid } = useParams()
     const params = useSearchParams()
     const frameId = params.get('frameid')
+
+    const { selectedEl } = useGetFrameDetails()
 
     // const { setFrameData } = useGetFrameDetails()
 
@@ -210,7 +214,8 @@ const Playgroundmainsection = () => {
             />
 
             {/* Setting Section */}
-            <PlaygroundSettingsection />
+            {selectedEl?.tagName === 'IMG' ? <ImageSettingSection selectedEl={selectedEl} /> : selectedEl ? <PlaygroundSettingsection /> : ''}
+
         </div>
     )
 }

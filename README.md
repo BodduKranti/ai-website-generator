@@ -160,3 +160,55 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # HTML Code Format
 1. npm i react-syntax-highlighter 
 2. npm i --save-dev @types/react-syntax-highlighter
+
+# Imagekit 
+1. imagekit.io
+    1.  https://imagekit.io/dashboard/developer/api-keys
+    2.  select the public and private key
+    3.  install image kit
+    4.  npm install @imagekit/next
+
+        This is the example Code
+
+        //import Image from 'next/image'
+        import { Image } from '@imagekit/next';
+
+        export default function Page() {
+        return (
+            <Image
+            urlEndpoint="https://ik.imagekit.io/your_imagekit_id" 
+            src="/profile.png"
+            width={500}
+            height={500}
+            alt="Picture of the author"
+            />
+        )
+        }
+
+        import { Image, ImageKitProvider } from '@imagekit/next';
+
+        export default function Page() {
+        return (
+            <ImageKitProvider urlEndpoint="https://ik.imagekit.io/your_imagekit_id">
+            <Image
+                src="/profile.png"
+                width={500}
+                height={500}
+                alt="Picture of the author"
+            />
+            </ImageKitProvider>
+        )
+        }
+
+        import { Video } from '@imagekit/next';
+        export default function Page() {
+        return (
+            <Video
+            urlEndpoint="https://ik.imagekit.io/your_imagekit_id"
+            src="/video.mp4"
+            controls
+            width={500}
+            height={500}
+            />
+        )
+        }

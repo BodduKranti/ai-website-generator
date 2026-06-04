@@ -28,11 +28,18 @@ type Props = {
     selectedEl: HTMLImageElement;
 };
 
-const transformOptions = [
-    { label: "Smart Crop", value: "smartcrop", icon: <Crop /> },
-    { label: "Resize", value: "resize", icon: <Expand /> },
-    { label: "Upscale", value: "upscale", icon: <ImageUpscale /> },
-    { label: "BG Remove", value: "bgremove", icon: <ImageMinus /> },
+type transformOptionsitems = {
+    label: string,
+    value: string,
+    icon: any,
+    transformation: any
+}
+
+const transformOptions: transformOptionsitems[] = [
+    { label: "Smart Crop", value: "smartcrop", icon: <Crop />, transformation: "fo-auto" },
+    { label: "Dropshadow", value: "dropshadow", icon: <Expand />, transformation: "e-dropshadow" },
+    { label: "Upscale", value: "upscale", icon: <ImageUpscale />, transformation: "e-upscale" },
+    { label: "BG Remove", value: "bgremove", icon: <ImageMinus />, transformation: "e-bgremove" },
 ];
 
 function ImageSettingSection({ selectedEl }: Props) {
@@ -80,7 +87,7 @@ function ImageSettingSection({ selectedEl }: Props) {
                 isPublished: true
             })
             console.log('selected img', imageRef)
-            selectedEl?.setAttribute('src', imageRef?.url)
+            selectedEl?.setAttribute('src', imageRef?.url + `?tr=`)
         }
         setLoading(false)
     }
@@ -92,11 +99,24 @@ function ImageSettingSection({ selectedEl }: Props) {
 
     const generateAiImage = () => {
         setLoading(true)
-        const url = `${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/ik-genimg-prompt-${altText}/${Date.now()}.png`
+        const url = `${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/ik-genimg-prompt-${altText}/${Date.now()}.png?tr=`
         setPreview(url)
         selectedEl?.setAttribute('src', url)
     }
 
+    const applyTransforms = (trnsForm: string) => {
+        setLoading(true)
+        if (!preview.includes(trnsForm)) {
+            const url = preview + trnsForm + ',';
+            setPreview(url)
+            selectedEl?.setAttribute('src', url)
+        } else {
+            const url = preview.replace(trnsForm + ',', '');
+            setPreview(url)
+            selectedEl?.setAttribute('src', url)
+        }
+
+    }
 
     return (
         <div className="w-96 shadow p-4 space-y-4">
@@ -163,9 +183,9 @@ function ImageSettingSection({ selectedEl }: Props) {
                                     <TooltipTrigger asChild>
                                         <Button
                                             type="button"
-                                            variant={applied ? "default" : "outline"}
+                                            variant={preview?.includes(opt.transformation) ? "default" : "outline"}
                                             className="flex items-center justify-center p-2"
-                                            onClick={() => toggleTransform(opt.value)}
+                                            onClick={() => applyTransforms(opt.transformation)}
                                         >
                                             {opt.icon}
                                         </Button>

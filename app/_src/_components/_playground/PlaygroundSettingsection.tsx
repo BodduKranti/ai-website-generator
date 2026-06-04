@@ -64,13 +64,13 @@ const PlaygroundSettingsection = () => {
         if (!selectedEl) return;
 
         // set initial classes
-        const currentClasses = selectedEl.className.split(" ")
+        const currentClasses = selectedEl?.className.split(" ")
             .filter((c: any) => c.trim() !== "");
         setClasses(currentClasses)
 
         // watch for future class changes
         const observer = new MutationObserver(() => {
-            const updated = selectedEl.className.split(" ").filter((c: any) => c.trimg() !== "")
+            const updated = selectedEl?.className?.split(" ")?.filter((c: any) => c.trimg() !== "")
             setClasses(updated)
         })
 

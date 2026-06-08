@@ -2,11 +2,12 @@ import { Button } from "@/components/ui/button"
 import { FC } from "react"
 
 interface CommonButtonprops {
-    buttonText: string,
+    buttonText: any,
     icon?: any,
     varient: 'default' | 'destructive' | 'ghost' | 'link' | 'outline' | 'secondary',
     className?: any,
-    onClick?: (e?: any) => void
+    onClick?: (e?: any) => void,
+    disabled?: boolean
 }
 
 const CommonButton: FC<CommonButtonprops> = ({
@@ -14,10 +15,14 @@ const CommonButton: FC<CommonButtonprops> = ({
     varient,
     className,
     icon,
-    onClick
+    onClick,
+    disabled
 }) => {
     return (
-        <Button onClick={onClick} variant={varient} className={`flex text-base cursor-pointer items-center justify-content-center gap-2 w-full py-2 px-4 h-auto ${className}`}>
+        <Button
+            disabled={disabled}
+            onClick={onClick} variant={varient}
+            className={`flex text-base cursor-pointer items-center justify-content-center gap-2 w-full py-2 px-4 h-auto ${className}`}>
             {icon ?
                 <>
                     {icon} {buttonText}

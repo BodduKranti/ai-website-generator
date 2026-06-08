@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { SignInButton, useUser } from '@clerk/nextjs'
 import axios from 'axios'
 import { ArrowUp, ImagePlusIcon, Loader2Icon } from 'lucide-react'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { routesApiurl } from '../../types'
 import { v4 as uuidv4 } from "uuid";
 import { toast } from 'sonner'
@@ -48,6 +48,8 @@ const HeroInputBox = ({ userInput, setUserInput }: HeroInputBoxprops) => {
             setLoading(false)
         }
     }
+
+
 
     return (
         <form className='w-full max-w-2xl border p-5 rounded-2xl'>

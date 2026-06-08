@@ -71,8 +71,6 @@ const Playgroundmainsection = () => {
 
     const { selectedEl } = useGetFrameDetails()
 
-    // const { setFrameData } = useGetFrameDetails()
-
     const [frameDetails, setFrameDetails] = useState<Frame>()
     const [messages, setMessages] = useState<chatMessagesitem[]>([])
     const [generatedCode, setGeneratedCode] = useState<any>()
@@ -102,7 +100,6 @@ const Playgroundmainsection = () => {
         frameId && getFrameDetails()
     }, [frameId])
 
-    console.log('frameDetails', frameDetails)
 
     const sendMessage = async (userInput: string) => {
         setLoading(true)
@@ -211,6 +208,8 @@ const Playgroundmainsection = () => {
             {/* Website Design Section */}
             <PlaygroundWebsiteDesignsection
                 generatedCode={generatedCode?.replace('```', '')}
+                frameId={frameId}
+                projectid={projectid}
             />
 
             {/* Setting Section */}

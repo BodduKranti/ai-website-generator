@@ -3,5 +3,6 @@ export enum routesApiurl {
     frameGetDetailsURL = `/api/frames`,
     aiModelURL = `/api/ai-model`,
     aiChatUpdateURL = `/api/chats`,
+    getallProjectsURL = `/api/get-all-projects`
 }
 

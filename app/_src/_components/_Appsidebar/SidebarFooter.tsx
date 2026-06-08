@@ -5,6 +5,7 @@ import { UserDetailsContext } from '../../Context/UserDetailsContext'
 import { Progress } from '@/components/ui/progress'
 import CommonButton from '../_Field/CommonButton'
 import { UserButton } from '@clerk/nextjs'
+import Link from 'next/link'
 
 const SidebarFootersection = () => {
     const { userDetails, setUserDetails } = useContext(UserDetailsContext)
@@ -15,10 +16,13 @@ const SidebarFootersection = () => {
                 Remaining Credits <span className="font-bold">{userDetails?.credits}</span>
             </h2>
             <Progress value={33} />
-            <CommonButton
-                buttonText='Upgrade to Unlimited'
-                varient='default'
-            />
+            <Link href={'/workspace/pricing'}>
+                <CommonButton
+                    buttonText='Upgrade to Unlimited'
+                    varient='default'
+                />
+            </Link>
+
             <div className='flex justify-between items-center gap-2 mt-5'>
                 <UserButton />
                 <CommonButton
